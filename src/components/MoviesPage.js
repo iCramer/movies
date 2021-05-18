@@ -151,10 +151,12 @@ const MoviesPage = () => {
       <div id="movies-page">
         <table>
           <thead>
-            <th>Movie Title</th>
-            <th>Actors</th>
-            <th>Year</th>
-            <th>Genre</th>
+            <tr>
+              <th>Movie Title</th>
+              <th>Actors</th>
+              <th>Year</th>
+              <th>Genre</th>
+            </tr>
           </thead>
           <tbody>
             {movies && movies.length && movies.map((movie, index) => (
@@ -162,7 +164,7 @@ const MoviesPage = () => {
                 <td>{movie.title}</td>
                 <td>
                   {movie.actors.length && movie.actors.map(actor => (
-                    <span key={actor.id}>{actor.name}</span>          
+                    <span className="actor-name" key={actor.id}>{actor.name}</span>          
                   ))}
                 </td>
                 <td>{movie.year}</td>

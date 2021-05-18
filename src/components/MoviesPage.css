@@ -2,3 +2,20 @@
     display: flex;
     justify-content: center;
 }
+
+.actor-name {
+    margin-right: 5px;
+}
+
+.actor-name:last-of-type {
+    margin-right: 0;
+}
+
+.actor-name::after {
+    display: inline-block;
+    content: ',';
+}
+
+.actor-name:last-of-type::after {
+    content: none;
+}

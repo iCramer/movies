@@ -115,9 +115,7 @@ function getMovies() {
 /* ------- (Imaginary) intermediate backend --------- */
 function getCombinedData() {
     return Promise.all([getMovies(), getGenres(), getActors()]).then(resp => {
-      let movies = resp[0];
-      let genres = resp[1];
-      let actors = resp[2];
+      let [movies, genres, actors] = resp;
       
       let combinedData = movies.reduce((acc, movie) => {
         let actorsArr = actors.filter(x => movie.actor_ids.includes(x.id));
@@ -142,7 +140,6 @@ const MoviesPage = () => {
     useEffect(() => {
       getCombinedData().then(data => {
         setMovies(data);
-        console.log(data)
       });
     }, []);
       
@@ -159,8 +156,8 @@ const MoviesPage = () => {
             </tr>
           </thead>
           <tbody>
-            {movies && movies.length && movies.map((movie, index) => (
-              <tr key={index}>
+            {movies && movies.length && movies.map(movie => (
+              <tr key={movie.name}>
                 <td>{movie.title}</td>
                 <td>
                   {movie.actors.length && movie.actors.map(actor => (

@@ -157,7 +157,7 @@ const MoviesPage = () => {
           </thead>
           <tbody>
             {movies && movies.length && movies.map(movie => (
-              <tr key={movie.name}>
+              <tr key={movie.title}>
                 <td>{movie.title}</td>
                 <td>
                   {movie.actors.length && movie.actors.map(actor => (
